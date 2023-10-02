@@ -1,0 +1,7 @@
+User-agent: *
+
+Disallow: /en/harrison-add-submodule-to-docs/ # Hidden version
+
+Disallow: /en/bagatur-sort_api_classes/ # Hidden version
+
+Sitemap: https://api.python.langchain.com/sitemap.xml

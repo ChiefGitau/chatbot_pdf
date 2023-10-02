@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Black">
+    <option name="pathToExecutable" value="$USER_HOME$/.local/bin/black" />
+    <option name="sdkUUID" value="be664db6-d1fe-4fc8-8d31-9fda77812621" />
+  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="Pipenv (chatbot_pdf)" project-jdk-type="Python SDK" />
+</project>

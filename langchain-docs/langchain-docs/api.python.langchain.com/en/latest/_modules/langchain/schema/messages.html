@@ -1,0 +1,541 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <title>langchain.schema.messages &mdash; 🦜🔗 LangChain 0.0.305</title>
+  
+  <link rel="canonical" href="https://api.python.langchain.com/en/latest/_modules/langchain/schema/messages.html" />
+
+  
+
+  <link rel="stylesheet" href="../../../_static/css/vendor/bootstrap.min.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/autodoc_pydantic.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
+  <link rel="stylesheet" href="/_/static/css/badge_only.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+<script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+<script src="../../../_static/jquery.js"></script> 
+
+<!-- RTD Extra Head -->
+
+<link rel="stylesheet" href="/_/static/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="application/json" id="READTHEDOCS_DATA">{"ad_free": false, "api_host": "https://readthedocs.org", "builder": "sphinx", "canonical_url": null, "docroot": "/docs/api_reference", "features": {"docsearch_disabled": false}, "global_analytics_code": "UA-17997319-1", "language": "en", "page": "_modules/langchain/schema/messages", "programming_language": "words", "project": "langchain", "proxied_api_host": "/_", "source_suffix": ".rst", "subprojects": {}, "theme": "scikit-learn-modern", "user_analytics_code": "", "version": "latest"}</script>
+
+<!--
+Using this variable directly instead of using `JSON.parse` is deprecated.
+The READTHEDOCS_DATA global variable will be removed in the future.
+-->
+<script type="text/javascript">
+READTHEDOCS_DATA = JSON.parse(document.getElementById('READTHEDOCS_DATA').innerHTML);
+</script>
+
+<script type="text/javascript" src="/_/static/javascript/readthedocs-analytics.js" async="async"></script>
+
+<!-- end RTD <extrahead> -->
+</head>
+<body>
+
+
+<nav id="navbar" class="sk-docs-navbar navbar navbar-expand-md navbar-light bg-light py-0">
+  <div class="container-fluid sk-docs-container px-0">
+    <button
+      id="sk-navbar-toggler"
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="sk-navbar-collapse collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="sk-nav-link nav-link" href="../../../api_reference.html">API</a>
+        </li>
+        <li class="nav-item">
+          <a class="sk-nav-link nav-link" href="../../../experimental_api_reference.html">Experimental</a>
+        </li>
+        <li class="nav-item">
+          <a class="sk-nav-link nav-link" target="_blank" rel="noopener noreferrer" href="https://python.langchain.com/">Python Docs</a>
+        </li>
+      </ul>
+      <div id="searchbox" role="search">
+          <div class="searchformwrapper">
+          <form class="search" action="../../../search.html" method="get">
+            <input class="sk-search-text-input" type="text" name="q" aria-labelledby="searchlabel" />
+            <input class="sk-search-text-btn" type="submit" value="Go" />
+          </form>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="d-flex" id="sk-doc-wrapper">
+    <input type="checkbox" name="sk-toggle-checkbox" id="sk-toggle-checkbox">
+    <label id="sk-sidemenu-toggle" class="sk-btn-toggle-toc btn sk-btn-primary" for="sk-toggle-checkbox">Toggle Menu</label>
+    <div id="sk-sidebar-wrapper" class="border-right">
+      <div class="sk-sidebar-toc-wrapper">
+        <div class="btn-group w-100 mb-2" role="group" aria-label="rellinks">
+            <a href="#" role="button" class="btn sk-btn-rellink py-1 disabled"">Prev</a><a href="../../index.html" role="button" class="btn sk-btn-rellink py-1" sk-rellink-tooltip="Module code">Up</a>
+            <a href="#" role="button" class="btn sk-btn-rellink py-1 disabled"">Next</a>
+        </div>
+        <div class="alert alert-warning p-1 mb-2" role="alert">
+          <p class="text-center mb-0">
+          <strong>LangChain 0.0.305</strong><br/>
+          </p>
+        </div>
+            <div class="sk-sidebar-toc">
+              
+            </div>
+      </div>
+    </div>
+    <div id="sk-page-content-wrapper">
+      <div class="sk-page-content container-fluid body px-md-3" role="main">
+        
+  <h1>Source code for langchain.schema.messages</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Sequence</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">from</span> <span class="nn">typing_extensions</span> <span class="kn">import</span> <span class="n">Literal</span>
+
+<span class="kn">from</span> <span class="nn">langchain.load.serializable</span> <span class="kn">import</span> <span class="n">Serializable</span>
+<span class="kn">from</span> <span class="nn">langchain.pydantic_v1</span> <span class="kn">import</span> <span class="n">Extra</span><span class="p">,</span> <span class="n">Field</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">langchain.prompts.chat</span> <span class="kn">import</span> <span class="n">ChatPromptTemplate</span>
+
+
+<div class="viewcode-block" id="get_buffer_string"><a class="viewcode-back" href="../../../schema/langchain.schema.messages.get_buffer_string.html#langchain.schema.messages.get_buffer_string">[docs]</a><span class="k">def</span> <span class="nf">get_buffer_string</span><span class="p">(</span>
+    <span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseMessage</span><span class="p">],</span> <span class="n">human_prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;Human&quot;</span><span class="p">,</span> <span class="n">ai_prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;AI&quot;</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert sequence of Messages to strings and concatenate them into one string.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        messages: Messages to be converted to strings.</span>
+<span class="sd">        human_prefix: The prefix to prepend to contents of HumanMessages.</span>
+<span class="sd">        ai_prefix: THe prefix to prepend to contents of AIMessages.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A single string concatenation of all input messages.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            from langchain.schema import AIMessage, HumanMessage</span>
+
+<span class="sd">            messages = [</span>
+<span class="sd">                HumanMessage(content=&quot;Hi, how are you?&quot;),</span>
+<span class="sd">                AIMessage(content=&quot;Good, how are you?&quot;),</span>
+<span class="sd">            ]</span>
+<span class="sd">            get_buffer_string(messages)</span>
+<span class="sd">            # -&gt; &quot;Human: Hi, how are you?\nAI: Good, how are you?&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">string_messages</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">HumanMessage</span><span class="p">):</span>
+            <span class="n">role</span> <span class="o">=</span> <span class="n">human_prefix</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">AIMessage</span><span class="p">):</span>
+            <span class="n">role</span> <span class="o">=</span> <span class="n">ai_prefix</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">SystemMessage</span><span class="p">):</span>
+            <span class="n">role</span> <span class="o">=</span> <span class="s2">&quot;System&quot;</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">FunctionMessage</span><span class="p">):</span>
+            <span class="n">role</span> <span class="o">=</span> <span class="s2">&quot;Function&quot;</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">ChatMessage</span><span class="p">):</span>
+            <span class="n">role</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">role</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Got unsupported message type: </span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">role</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">content</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">AIMessage</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;function_call&quot;</span> <span class="ow">in</span> <span class="n">m</span><span class="o">.</span><span class="n">additional_kwargs</span><span class="p">:</span>
+            <span class="n">message</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">m</span><span class="o">.</span><span class="n">additional_kwargs</span><span class="p">[</span><span class="s1">&#39;function_call&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">string_messages</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">string_messages</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="BaseMessage"><a class="viewcode-back" href="../../../schema/langchain.schema.messages.BaseMessage.html#langchain.schema.messages.BaseMessage">[docs]</a><span class="k">class</span> <span class="nc">BaseMessage</span><span class="p">(</span><span class="n">Serializable</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The base abstract Message class.</span>
+
+<span class="sd">    Messages are the inputs and outputs of ChatModels.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">content</span><span class="p">:</span> <span class="nb">str</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The string contents of the message.&quot;&quot;&quot;</span>
+
+    <span class="n">additional_kwargs</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="n">Field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Any additional information.&quot;&quot;&quot;</span>
+
+    <span class="nb">type</span><span class="p">:</span> <span class="nb">str</span>
+
+    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">extra</span> <span class="o">=</span> <span class="n">Extra</span><span class="o">.</span><span class="n">allow</span>
+
+<div class="viewcode-block" id="BaseMessage.is_lc_serializable"><a class="viewcode-back" href="../../../schema/langchain.schema.messages.BaseMessage.html#langchain.schema.messages.BaseMessage.is_lc_serializable">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">is_lc_serializable</span><span class="p">(</span><span class="bp">cls</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return whether this class is serializable.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ChatPromptTemplate</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">langchain.prompts.chat</span> <span class="kn">import</span> <span class="n">ChatPromptTemplate</span>
+
+        <span class="n">prompt</span> <span class="o">=</span> <span class="n">ChatPromptTemplate</span><span class="p">(</span><span class="n">messages</span><span class="o">=</span><span class="p">[</span><span class="bp">self</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">prompt</span> <span class="o">+</span> <span class="n">other</span></div>
+
+
+<div class="viewcode-block" id="BaseMessageChunk"><a class="viewcode-back" href="../../../schema/langchain.schema.messages.BaseMessageChunk.html#langchain.schema.messages.BaseMessageChunk">[docs]</a><span class="k">class</span> <span class="nc">BaseMessageChunk</span><span class="p">(</span><span class="n">BaseMessage</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A Message chunk, which can be concatenated with other Message chunks.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_merge_kwargs_dict</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">left</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">right</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Merge additional_kwargs from another BaseMessageChunk into this one.&quot;&quot;&quot;</span>
+        <span class="n">merged</span> <span class="o">=</span> <span class="n">left</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">right</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">merged</span><span class="p">:</span>
+                <span class="n">merged</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+            <span class="k">elif</span> <span class="nb">type</span><span class="p">(</span><span class="n">merged</span><span class="p">[</span><span class="n">k</span><span class="p">])</span> <span class="o">!=</span> <span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s1">&#39;additional_kwargs[&quot;</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s1">&quot;] already exists in this message,&#39;</span>
+                    <span class="s2">&quot; but with a different type.&quot;</span>
+                <span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">merged</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">merged</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">+=</span> <span class="n">v</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">merged</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="n">merged</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_merge_kwargs_dict</span><span class="p">(</span><span class="n">merged</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">v</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Additional kwargs key </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2"> already exists in this message.&quot;</span>
+                <span class="p">)</span>
+        <span class="k">return</span> <span class="n">merged</span>
+
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BaseMessageChunk</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">BaseMessageChunk</span><span class="p">):</span>
+            <span class="c1"># If both are (subclasses of) BaseMessageChunk,</span>
+            <span class="c1"># concat into a single BaseMessageChunk</span>
+
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ChatMessageChunk</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
+                    <span class="n">role</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">role</span><span class="p">,</span>
+                    <span class="n">content</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">content</span><span class="p">,</span>
+                    <span class="n">additional_kwargs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_merge_kwargs_dict</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">additional_kwargs</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">additional_kwargs</span>
+                    <span class="p">),</span>
+                <span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
+                <span class="n">content</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">content</span><span class="p">,</span>
+                <span class="n">additional_kwargs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_merge_kwargs_dict</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">additional_kwargs</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">additional_kwargs</span>
+                <span class="p">),</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                <span class="s1">&#39;unsupported operand type(s) for +: &quot;&#39;</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="sa">f</span><span class="s1">&#39;&quot; and &quot;</span><span class="si">{</span><span class="n">other</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1">&quot;&#39;</span>
+            <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="HumanMessage"><a class="viewcode-back" href="../../../schema/langchain.schema.messages.HumanMessage.html#langchain.schema.messages.HumanMessage">[docs]</a><span class="k">class</span> <span class="nc">HumanMessage</span><span class="p">(</span><span class="n">BaseMessage</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A Message from a human.&quot;&quot;&quot;</span>
+
+    <span class="n">example</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Whether this Message is being passed in to the model as part of an example </span>
+<span class="sd">        conversation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">type</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;human&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;human&quot;</span>
+    <span class="n">is_chunk</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+
+<span class="n">HumanMessage</span><span class="o">.</span><span class="n">update_forward_refs</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="HumanMessageChunk"><a class="viewcode-back" href="../../../schema/langchain.schema.messages.HumanMessageChunk.html#langchain.schema.messages.HumanMessageChunk">[docs]</a><span class="k">class</span> <span class="nc">HumanMessageChunk</span><span class="p">(</span><span class="n">HumanMessage</span><span class="p">,</span> <span class="n">BaseMessageChunk</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A Human Message chunk.&quot;&quot;&quot;</span>
+
+    <span class="c1"># Ignoring mypy re-assignment here since we&#39;re overriding the value</span>
+    <span class="c1"># to make sure that the chunk variant can be discriminated from the</span>
+    <span class="c1"># non-chunk variant.</span>
+    <span class="n">is_chunk</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># type: ignore[assignment]</span></div>
+
+
+<div class="viewcode-block" id="AIMessage"><a class="viewcode-back" href="../../../schema/langchain.schema.messages.AIMessage.html#langchain.schema.messages.AIMessage">[docs]</a><span class="k">class</span> <span class="nc">AIMessage</span><span class="p">(</span><span class="n">BaseMessage</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A Message from an AI.&quot;&quot;&quot;</span>
+
+    <span class="n">example</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Whether this Message is being passed in to the model as part of an example </span>
+<span class="sd">        conversation.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">type</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;ai&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ai&quot;</span>
+    <span class="n">is_chunk</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+
+<span class="n">AIMessage</span><span class="o">.</span><span class="n">update_forward_refs</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="AIMessageChunk"><a class="viewcode-back" href="../../../schema/langchain.schema.messages.AIMessageChunk.html#langchain.schema.messages.AIMessageChunk">[docs]</a><span class="k">class</span> <span class="nc">AIMessageChunk</span><span class="p">(</span><span class="n">AIMessage</span><span class="p">,</span> <span class="n">BaseMessageChunk</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A Message chunk from an AI.&quot;&quot;&quot;</span>
+
+    <span class="c1"># Ignoring mypy re-assignment here since we&#39;re overriding the value</span>
+    <span class="c1"># to make sure that the chunk variant can be discriminated from the</span>
+    <span class="c1"># non-chunk variant.</span>
+    <span class="n">is_chunk</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># type: ignore[assignment]</span>
+
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BaseMessageChunk</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">AIMessageChunk</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">example</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">example</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;Cannot concatenate AIMessageChunks with different example values.&quot;</span>
+                <span class="p">)</span>
+
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
+                <span class="n">example</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">example</span><span class="p">,</span>
+                <span class="n">content</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">content</span><span class="p">,</span>
+                <span class="n">additional_kwargs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_merge_kwargs_dict</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">additional_kwargs</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">additional_kwargs</span>
+                <span class="p">),</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__add__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SystemMessage"><a class="viewcode-back" href="../../../schema/langchain.schema.messages.SystemMessage.html#langchain.schema.messages.SystemMessage">[docs]</a><span class="k">class</span> <span class="nc">SystemMessage</span><span class="p">(</span><span class="n">BaseMessage</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A Message for priming AI behavior, usually passed in as the first of a sequence</span>
+<span class="sd">    of input messages.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nb">type</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;system&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;system&quot;</span>
+    <span class="n">is_chunk</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+
+<span class="n">SystemMessage</span><span class="o">.</span><span class="n">update_forward_refs</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="SystemMessageChunk"><a class="viewcode-back" href="../../../schema/langchain.schema.messages.SystemMessageChunk.html#langchain.schema.messages.SystemMessageChunk">[docs]</a><span class="k">class</span> <span class="nc">SystemMessageChunk</span><span class="p">(</span><span class="n">SystemMessage</span><span class="p">,</span> <span class="n">BaseMessageChunk</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A System Message chunk.&quot;&quot;&quot;</span>
+
+    <span class="c1"># Ignoring mypy re-assignment here since we&#39;re overriding the value</span>
+    <span class="c1"># to make sure that the chunk variant can be discriminated from the</span>
+    <span class="c1"># non-chunk variant.</span>
+    <span class="n">is_chunk</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># type: ignore[assignment]</span></div>
+
+
+<div class="viewcode-block" id="FunctionMessage"><a class="viewcode-back" href="../../../schema/langchain.schema.messages.FunctionMessage.html#langchain.schema.messages.FunctionMessage">[docs]</a><span class="k">class</span> <span class="nc">FunctionMessage</span><span class="p">(</span><span class="n">BaseMessage</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A Message for passing the result of executing a function back to a model.&quot;&quot;&quot;</span>
+
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The name of the function that was executed.&quot;&quot;&quot;</span>
+
+    <span class="nb">type</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;function&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;function&quot;</span>
+    <span class="n">is_chunk</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+
+<span class="n">FunctionMessage</span><span class="o">.</span><span class="n">update_forward_refs</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="FunctionMessageChunk"><a class="viewcode-back" href="../../../schema/langchain.schema.messages.FunctionMessageChunk.html#langchain.schema.messages.FunctionMessageChunk">[docs]</a><span class="k">class</span> <span class="nc">FunctionMessageChunk</span><span class="p">(</span><span class="n">FunctionMessage</span><span class="p">,</span> <span class="n">BaseMessageChunk</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A Function Message chunk.&quot;&quot;&quot;</span>
+
+    <span class="c1"># Ignoring mypy re-assignment here since we&#39;re overriding the value</span>
+    <span class="c1"># to make sure that the chunk variant can be discriminated from the</span>
+    <span class="c1"># non-chunk variant.</span>
+    <span class="n">is_chunk</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># type: ignore[assignment]</span>
+
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BaseMessageChunk</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">FunctionMessageChunk</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;Cannot concatenate FunctionMessageChunks with different names.&quot;</span>
+                <span class="p">)</span>
+
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
+                <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="n">content</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">content</span><span class="p">,</span>
+                <span class="n">additional_kwargs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_merge_kwargs_dict</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">additional_kwargs</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">additional_kwargs</span>
+                <span class="p">),</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__add__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ChatMessage"><a class="viewcode-back" href="../../../schema/langchain.schema.messages.ChatMessage.html#langchain.schema.messages.ChatMessage">[docs]</a><span class="k">class</span> <span class="nc">ChatMessage</span><span class="p">(</span><span class="n">BaseMessage</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A Message that can be assigned an arbitrary speaker (i.e. role).&quot;&quot;&quot;</span>
+
+    <span class="n">role</span><span class="p">:</span> <span class="nb">str</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The speaker / role of the Message.&quot;&quot;&quot;</span>
+
+    <span class="nb">type</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;chat&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;chat&quot;</span>
+    <span class="n">is_chunk</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+
+<span class="n">ChatMessage</span><span class="o">.</span><span class="n">update_forward_refs</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="ChatMessageChunk"><a class="viewcode-back" href="../../../schema/langchain.schema.messages.ChatMessageChunk.html#langchain.schema.messages.ChatMessageChunk">[docs]</a><span class="k">class</span> <span class="nc">ChatMessageChunk</span><span class="p">(</span><span class="n">ChatMessage</span><span class="p">,</span> <span class="n">BaseMessageChunk</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A Chat Message chunk.&quot;&quot;&quot;</span>
+
+    <span class="c1"># Ignoring mypy re-assignment here since we&#39;re overriding the value</span>
+    <span class="c1"># to make sure that the chunk variant can be discriminated from the</span>
+    <span class="c1"># non-chunk variant.</span>
+    <span class="n">is_chunk</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># type: ignore[assignment]</span>
+
+    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BaseMessageChunk</span><span class="p">:</span>  <span class="c1"># type: ignore</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">ChatMessageChunk</span><span class="p">):</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">role</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">role</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;Cannot concatenate ChatMessageChunks with different roles.&quot;</span>
+                <span class="p">)</span>
+
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span>
+                <span class="n">role</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">role</span><span class="p">,</span>
+                <span class="n">content</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">content</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">content</span><span class="p">,</span>
+                <span class="n">additional_kwargs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_merge_kwargs_dict</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">additional_kwargs</span><span class="p">,</span> <span class="n">other</span><span class="o">.</span><span class="n">additional_kwargs</span>
+                <span class="p">),</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__add__</span><span class="p">(</span><span class="n">other</span><span class="p">)</span></div>
+
+
+<span class="n">AnyMessage</span> <span class="o">=</span> <span class="n">Union</span><span class="p">[</span><span class="n">AIMessage</span><span class="p">,</span> <span class="n">HumanMessage</span><span class="p">,</span> <span class="n">ChatMessage</span><span class="p">,</span> <span class="n">SystemMessage</span><span class="p">,</span> <span class="n">FunctionMessage</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">_message_to_dict</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">BaseMessage</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">message</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">message</span><span class="o">.</span><span class="n">dict</span><span class="p">()}</span>
+
+
+<div class="viewcode-block" id="messages_to_dict"><a class="viewcode-back" href="../../../schema/langchain.schema.messages.messages_to_dict.html#langchain.schema.messages.messages_to_dict">[docs]</a><span class="k">def</span> <span class="nf">messages_to_dict</span><span class="p">(</span><span class="n">messages</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">BaseMessage</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a sequence of Messages to a list of dictionaries.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        messages: Sequence of messages (as BaseMessages) to convert.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        List of messages as dicts.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">_message_to_dict</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">]</span></div>
+
+
+<span class="k">def</span> <span class="nf">_message_from_dict</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BaseMessage</span><span class="p">:</span>
+    <span class="n">_type</span> <span class="o">=</span> <span class="n">message</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">_type</span> <span class="o">==</span> <span class="s2">&quot;human&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">HumanMessage</span><span class="p">(</span><span class="o">**</span><span class="n">message</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="n">_type</span> <span class="o">==</span> <span class="s2">&quot;ai&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">AIMessage</span><span class="p">(</span><span class="o">**</span><span class="n">message</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="n">_type</span> <span class="o">==</span> <span class="s2">&quot;system&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">SystemMessage</span><span class="p">(</span><span class="o">**</span><span class="n">message</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="n">_type</span> <span class="o">==</span> <span class="s2">&quot;chat&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ChatMessage</span><span class="p">(</span><span class="o">**</span><span class="n">message</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="n">_type</span> <span class="o">==</span> <span class="s2">&quot;function&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">FunctionMessage</span><span class="p">(</span><span class="o">**</span><span class="n">message</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Got unexpected message type: </span><span class="si">{</span><span class="n">_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="messages_from_dict"><a class="viewcode-back" href="../../../schema/langchain.schema.messages.messages_from_dict.html#langchain.schema.messages.messages_from_dict">[docs]</a><span class="k">def</span> <span class="nf">messages_from_dict</span><span class="p">(</span><span class="n">messages</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">dict</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">BaseMessage</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert a sequence of messages from dicts to Message objects.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        messages: Sequence of messages (as dicts) to convert.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        List of messages (BaseMessages).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">_message_from_dict</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">]</span></div>
+</pre></div>
+
+      </div>
+    <div class="container">
+      <footer class="sk-content-footer">
+            &copy; 2023, Harrison Chase.
+          Last updated on Oct 01, 2023.
+      </footer>
+    </div>
+  </div>
+</div>
+<script src="../../../_static/js/vendor/bootstrap.min.js"></script>
+<script>
+$(document).ready(function() {
+    /* Add a [>>>] button on the top-right corner of code samples to hide
+     * the >>> and ... prompts and the output and thus make the code
+     * copyable. */
+    var div = $('.highlight-python .highlight,' +
+                '.highlight-python3 .highlight,' +
+                '.highlight-pycon .highlight,' +
+		'.highlight-default .highlight')
+    var pre = div.find('pre');
+
+    // get the styles from the current theme
+    pre.parent().parent().css('position', 'relative');
+    var hide_text = 'Hide prompts and outputs';
+    var show_text = 'Show prompts and outputs';
+
+    // create and add the button to all the code blocks that contain >>>
+    div.each(function(index) {
+        var jthis = $(this);
+        if (jthis.find('.gp').length > 0) {
+            var button = $('<span class="copybutton">&gt;&gt;&gt;</span>');
+            button.attr('title', hide_text);
+            button.data('hidden', 'false');
+            jthis.prepend(button);
+        }
+        // tracebacks (.gt) contain bare text elements that need to be
+        // wrapped in a span to work with .nextUntil() (see later)
+        jthis.find('pre:has(.gt)').contents().filter(function() {
+            return ((this.nodeType == 3) && (this.data.trim().length > 0));
+        }).wrap('<span>');
+    });
+
+    // define the behavior of the button when it's clicked
+    $('.copybutton').click(function(e){
+        e.preventDefault();
+        var button = $(this);
+        if (button.data('hidden') === 'false') {
+            // hide the code output
+            button.parent().find('.go, .gp, .gt').hide();
+            button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'hidden');
+            button.css('text-decoration', 'line-through');
+            button.attr('title', show_text);
+            button.data('hidden', 'true');
+        } else {
+            // show the code output
+            button.parent().find('.go, .gp, .gt').show();
+            button.next('pre').find('.gt').nextUntil('.gp, .go').css('visibility', 'visible');
+            button.css('text-decoration', 'none');
+            button.attr('title', hide_text);
+            button.data('hidden', 'false');
+        }
+    });
+
+	/*** Add permalink buttons next to glossary terms ***/
+	$('dl.glossary > dt[id]').append(function() {
+		return ('<a class="headerlink" href="#' +
+			    this.getAttribute('id') +
+			    '" title="Permalink to this term">¶</a>');
+	});
+});
+
+</script>
+    
+</body>
+</html>
